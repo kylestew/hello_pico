@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.13)
 
 # initialize pico_sdk from submodule
 # note: this must happen before project()
@@ -13,7 +13,9 @@ add_executable(HelloPico
     main.c
     )
 
-target_link_libraries(HelloPico pico_stdlib)
+pico_enable_stdio_usb(HelloPico 1)
+pico_enable_stdio_uart(HelloPico 1)
 
 pico_add_extra_outputs(HelloPico)
 
+target_link_libraries(HelloPico pico_stdlib)

@@ -1,20 +1,21 @@
+#include <stdio.h>
+
+#include "hardware/gpio.h"
 #include "pico/stdlib.h"
 
 const uint LED_PIN = PICO_DEFAULT_LED_PIN;
 
-bool timer_callback(struct timer* t) {
-    gpio_put(LED_PIN, !gpio_get(LED_PIN));
-    return true;
-}
-
 int main() {
+    stdio_init_all();
+
     gpio_init(LED_PIN);
     gpio_set_dir(LED_PIN, GPIO_OUT);
 
-    struct repeating_timer timer;
-    add_repeating_timer_ms(-500, timer_callback, NULL, &timer);
-    sleep_ms(4000);
-    cancel_repeating_timer(&timer);
-
-    return 0;
+    while (1) {
+        gpio_put(LED_PIN, 0);
+        sleep_ms(250);
+        gpio_put(LED_PIN, 1);
+        puts("Hello World\n");
+        sleep_ms(1000);
+    }
 }

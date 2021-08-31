@@ -1,6 +1,6 @@
 # Hello Pico
 
-Building a self contained pi pico repo
+Building a self contained pi pico repo for C++ projects
 
 ## Extra Environment Support
 
@@ -13,8 +13,14 @@ if it goes into the main project so this dependency is not needed (install from 
 
 ### VSCode
 
-Using VSCode for now, haven't fully figured out how to dev the Pico in VIM. Will switch this over when I do.
+Use VSCode for simple workflow and integrated debug support. The `launch.json` should work for this project, but may have broken. Raspberry pi has a good [datasheet](https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf) on how to fix a broken worfklow.
 
 #### launch.json
 
 Wonky hardcoded settings for OpenOCD path, there is probably a better way!
+
+### Serial Port
+
+    $ screen /dev/tty.usbmodem1441201 115200
+
+ctrl-a, ctrl \ to disconnect
